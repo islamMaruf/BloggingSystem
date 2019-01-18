@@ -1,4 +1,18 @@
-<div class="sidebar-wrapper">
+<div class="sidebar" data-color="green" data-background-color="black" data-image="{{asset('assets/back-end')}}/assets/img/sidebar-1.jpg">
+    <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+      Tip 2: you can also add an image using data-image tag
+  -->
+    <div class="logo">
+        <a class="simple-text logo-mini">
+            CT
+        </a>
+        <a class="simple-text logo-normal">
+            Creative Tim
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
     <div class="user">
         <div class="photo">
             <img src="{{asset('assets/back-end')}}/assets/img/faces/avatar.jpg" />
@@ -64,46 +78,12 @@
                             <span class="sidebar-normal"> RTL Support </span>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="pages/timeline.html">
-                            <span class="sidebar-mini"> T </span>
-                            <span class="sidebar-normal"> Timeline </span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="pages/login.html">
-                            <span class="sidebar-mini"> LP </span>
-                            <span class="sidebar-normal"> Login Page </span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="pages/register.html">
-                            <span class="sidebar-mini"> RP </span>
-                            <span class="sidebar-normal"> Register Page </span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="pages/lock.html">
-                            <span class="sidebar-mini"> LSP </span>
-                            <span class="sidebar-normal"> Lock Screen Page </span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="pages/user.html">
-                            <span class="sidebar-mini"> UP </span>
-                            <span class="sidebar-normal"> User Profile </span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="pages/error.html">
-                            <span class="sidebar-mini"> E </span>
-                            <span class="sidebar-normal"> Error Page </span>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </li>
 
 
     </ul>
+</div>
 </div>

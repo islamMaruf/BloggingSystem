@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Jan 2019 10:56:21 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/back-end')}}/assets/img/apple-icon.png">
@@ -18,47 +15,27 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="{{asset('assets/back-end')}}/assets/css/material-dashboard.minf066.css?v=2.1.0" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="{{asset('assets/back-end')}}/assets/demo/demo.css" rel="stylesheet" />
+
 
 </head>
 
-<body>
-<div class="wrapper ">
-    <div class="sidebar" data-color="green" data-background-color="black" data-image="{{asset('assets/back-end')}}/assets/img/sidebar-1.jpg">
-        <!--
-          Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+<body id="body">
+@if(Auth::check() == true)
+    <div class="wrapper ">
 
-          Tip 2: you can also add an image using data-image tag
-      -->
-        <div class="logo">
-            <a class="simple-text logo-mini">
-                CT
-            </a>
-            <a class="simple-text logo-normal">
-                Creative Tim
-            </a>
-        </div>
         @include('layouts.backend.partial.sidebar')
-    </div>
-    <div class="main-panel">
-        <!-- Navbar -->
+
+        <div class="main-panel">
+            <!-- Navbar -->
         @include('layouts.backend.partial.topbar')
         <!-- End Navbar -->
-        @yield('content')
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="copyright float-right">
-                    &copy;
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>, made with <i class="material-icons">favorite</i> by
-                    <a>Creative Tim</a> for a better web.
-                </div>
-            </div>
-        </footer>
+            @yield('content')
+            @include('layouts.backend.partial.footer')
+        </div>
     </div>
-</div>
+@else
+    @yield('login')
+@endif
 
 <script src="{{asset('assets/back-end')}}/assets/js/core/jquery.min.js"></script>
 <script src="{{asset('assets/back-end')}}/assets/js/core/popper.min.js"></script>
@@ -108,16 +85,7 @@
 <!-- Sharrre libray -->
 <script src="{{asset('assets/back-end')}}/assets/demo/jquery.sharrre.js"></script>
 
-
-<script>
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        md.initDashboardPageCharts();
-
-        md.initVectorMap();
-
-    });
-</script>
+@stack('scripts')
 </body>
 
 </html>
