@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/back-end')}}/assets/img/apple-icon.png">
@@ -15,22 +15,26 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="{{asset('assets/back-end')}}/assets/css/material-dashboard.minf066.css?v=2.1.0" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
 </head>
 
-<body id="body">
+<body id="main-body">
 @if(Auth::check() == true)
     <div class="wrapper ">
-
+        <!-- Sidebar -->
         @include('layouts.backend.partial.sidebar')
-
+        <!-- Sidebar -->
         <div class="main-panel">
-            <!-- Navbar -->
-        @include('layouts.backend.partial.topbar')
+        <!-- Navbar -->
+        @include('layouts.backend.partial.navbar')
         <!-- End Navbar -->
-            @yield('content')
-            @include('layouts.backend.partial.footer')
+        <!--Content-->
+        @yield('content')
+        <!--End Content-->
+        <!--Footer-->
+        @include('layouts.backend.partial.footer')
+        <!--Footer-->
         </div>
     </div>
 @else
@@ -84,8 +88,25 @@
 
 <!-- Sharrre libray -->
 <script src="{{asset('assets/back-end')}}/assets/demo/jquery.sharrre.js"></script>
+<script src="{{asset('assets/back-end')}}/assets/js/plugins/sweetalert2.js"></script>
+<script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+{!! Toastr::message() !!}
+<script>
+    @if($errors->any())
+    @forEach($errors->all() as $error)
+    toastr.error('{{$error}}','Error',{
+        closeButton:true,
+        progressBar: true
+
+    });
+    @endforeach
+
+    @endif
+</script>
+
 
 @stack('scripts')
+
 </body>
 
 </html>

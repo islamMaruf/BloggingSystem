@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="green" data-background-color="black" data-image="{{asset('assets/back-end')}}/assets/img/sidebar-1.jpg">
+<div class="sidebar" data-color="purple" data-background-color="purple" data-image="{{asset('assets/back-end')}}/assets/img/sidebar-1.jpg">
     <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -42,8 +42,6 @@
                         <a class="nav-link">
                             <span class="sidebar-mini"> A </span>
                             <span class="sidebar-normal">{{Auth::User()->role->name}}</span>
-
-
                         </a>
                     </li>
                 </ul>
@@ -51,37 +49,33 @@
         </div>
     </div>
     <ul class="nav">
-        <li class="nav-item active ">
-            <a class="nav-link" href="dashboard.html">
+        @if(Request::is('admin*'))
+        <li class="nav-item {{Request::is('admin/dashboard') ? 'active':''}}">
+            <a class="nav-link" href="{{route('admin.dashboard-hit')}}">
                 <i class="material-icons">dashboard</i>
                 <p> Dashboard </p>
             </a>
         </li>
-        <li class="nav-item ">
-            <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
-                <i class="material-icons">image</i>
-                <p> Pages
-                    <b class="caret"></b>
-                </p>
+        <li class="nav-item {{Request::is('admin/tags') ? 'active':''}}">
+            <a class="nav-link" href="{{route('admin.tags.index')}}">
+                <i class="material-icons">view_headline</i>
+                <p> Tags </p>
             </a>
-            <div class="collapse" id="pagesExamples">
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="pages/pricing.html">
-                            <span class="sidebar-mini"> P </span>
-                            <span class="sidebar-normal"> Pricing </span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="pages/rtl.html">
-                            <span class="sidebar-mini"> RS </span>
-                            <span class="sidebar-normal"> RTL Support </span>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
         </li>
+
+
+        @endif
+        @if(Request::is('author*'))
+        <li class="nav-item {{Request::is('author/dashboard') ? 'active':''}}">
+            <a class="nav-link" href="{{route('author.dashboard-hit')}}">
+                <i class="material-icons">dashboard</i>
+                <p> Dashboard </p>
+            </a>
+        </li>
+        @endif
+
+
+
 
 
     </ul>

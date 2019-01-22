@@ -1,4 +1,7 @@
 @extends('layouts.backend.master')
+@section('title')
+    dashboard
+@endsection
 @section('content')
 <div class="content">
     <div class="container-fluid">

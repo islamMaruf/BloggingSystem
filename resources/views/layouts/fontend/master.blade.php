@@ -20,8 +20,9 @@
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="{{asset('assets')}}/font-end/css/style.css" />
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--Toaster css-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -330,7 +331,22 @@
 <script src="{{asset('assets')}}/font-end/js/bootstrap.min.js"></script>
 <script src="{{asset('assets')}}/font-end/js/jquery.stellar.min.js"></script>
 <script src="{{asset('assets')}}/font-end/js/main.js"></script>
+<!--Toaster js-->
 
+<script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+{!! Toastr::message() !!}
+<script>
+    @if($errors->any())
+    @forEach($errors->all() as $error)
+    toastr.error('{{$error}}','Error',{
+        closeButton:true,
+        progressBar: true
+
+    });
+    @endforeach
+
+    @endif
+</script>
 </body>
 
 </html>
