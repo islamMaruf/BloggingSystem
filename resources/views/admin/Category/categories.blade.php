@@ -1,6 +1,6 @@
 @extends('layouts.backend.master')
 @section('title')
-tags
+categories
 @endsection
 @section('content')
 <div class="content">
@@ -8,21 +8,36 @@ tags
 
         <div class="row">
             <div class="col-md-6 ml-auto mr-auto">
-                <form id="RegisterValidation" action="{{route('admin.tags.store')}}" method="post">
+                <form id="RegisterValidation" action="{{route('admin.categories.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card ">
                         <div class="card-header card-header-primary card-header-icon">
                             <div class="card-icon">
                                 <i class="material-icons">mail_outline</i>
                             </div>
-                            <h4 class="card-title">Tag name</h4>
+                            <h4 class="card-title">Category name</h4>
                         </div>
                         <div class="card-body ">
                             <div class="form-group">
                                 @csrf
-                                <label for="exampleEmail" class="bmd-label-floating"> Enter Tag Name*</label>
-                                <input type="text" class="form-control" id="exampleName" required="true" name="name">
+                                <label for="exampleEmail" class="bmd-label-floating"> Enter Category Name*</label>
+                                <input type="text" class="form-control" required="true" name="name">
                             </div>
+                             <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                        <div class="fileinput-new thumbnail">
+                                            <img src="{{asset('assets/back-end/assets/img/image_placeholder.jpg')}}" alt="img_source" height="120px" width="120px">
+                                        </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail " ></div>
+                                        <div class="text-left">
+                                            <span class="btn btn-primary btn-file">
+                                                <span class="fileinput-new">Select image</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type="file" name="image" />
+                                            </span>
+                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists"
+                                                data-dismiss="filein put"><i class="fa fa-times"></i> Remove</a>
+                                        </div>
+                             </div>
                         </div>
                         <div class="card-footer text-right">
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -39,7 +54,7 @@ tags
                         <div class="card-icon">
                             <i class="material-icons">assignment</i>
                         </div>
-                        <h4 class="card-title">Tag List</h4>
+                        <h4 class="card-title">Category List</h4>
                     </div>
                     <div class="card-body">
                         <div class="toolbar">
@@ -51,8 +66,9 @@ tags
                                 <thead>
                                     <tr>
                                         <th>SL</th>
-                                        <th>Tag Name</th>
+                                        <th>Name</th>
                                         <th>Slug</th>
+                                        <th>Image</th>
                                         <th>Created at</th>
                                         <th>Updated at</th>
                                         <th class="disabled-sorting text-center">Actions</th>
@@ -61,8 +77,9 @@ tags
                                 <tfoot>
                                     <tr>
                                         <th>SL</th>
-                                        <th>Tag Name</th>
+                                        <th> Name</th>
                                         <th>Slug</th>
+                                        <th>Image</th>
                                         <th>Created at</th>
                                         <th>Updated at</th>
                                         <th class="text-center">Actions</th>
@@ -70,20 +87,21 @@ tags
                                 </tfoot>
                                 <tbody>
                                     @php($i=1)
-                                    @foreach($tags as $tag)
+                                    @foreach($categories as $category)
                                     <tr>
                                         <td>{{$i++}}</td>
-                                        <td>{{$tag->tagName}}</td>
-                                        <td>{{$tag->tagSlug}}</td>
-                                        <td>{{ date('M j, Y h:i a',strtotime($tag->created_at)) }}</td>
-                                        <td>{{ date('M j, Y h:i a',strtotime($tag->updated_at)) }}</td>
+                                        <td>{{$category->name}}</td>
+                                        <td>{{$category->slug}}</td>
+                                        <td>{{$category->image}}</td>
+                                        <td>{{ date('M j, Y h:i a',strtotime($category->created_at)) }}</td>
+                                        <td>{{ date('M j, Y h:i a',strtotime($category->updated_at)) }}</td>
 
                                         <td class="td-actions text-center">
-                                            <a href="{{route('admin.tags.edit',$tag->id)}}" class="btn btn-success btn-round edit"><i
+                                            <a href="{{route('admin.categories.edit',$category->id)}}" class="btn btn-success btn-round edit"><i
                                                     class="material-icons">edit</i></a>
-                                            <a class="btn btn btn-danger btn-round remove" onclick="deleteTag({{$tag->id}})"><i
+                                            <a class="btn btn btn-danger btn-round remove" onclick="deleteTag({{$category->id}})"><i
                                                     class="material-icons">close</i></a>
-                                            <form id="delete-form-{{$tag->id}}" action="{{route('admin.tags.destroy',$tag->id)}}"
+                                            <form id="delete-form-{{$tag->id}}" action="{{route('admin.categories.destroy',$category->id)}}"
                                                 method="post" style="display: none">
                                                 @csrf
                                                 @method('DELETE')

@@ -1,6 +1,6 @@
 @extends('layouts.backend.master')
 @section('title')
-    dashboard
+dashboard
 @endsection
 @section('content')
 <div class="content">
@@ -79,15 +79,14 @@
 @endsection
 
 @push('scripts')
-    <script>
-        $(document).ready(function() {
-            // Javascript method's body can be found in assets/js/demos.js
-            md.initDashboardPageCharts();
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        md.initDashboardPageCharts();
 
-            md.initVectorMap();
+        md.initVectorMap();
 
-        });
-    </script>
+    });
+
+</script>
 @endpush
-
-

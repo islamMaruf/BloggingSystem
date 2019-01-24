@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Tag;
 
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,6 +18,12 @@ class TagController extends Controller
      */
     public function index()
     {
+//        if (Cache::has('tags')) {
+//            $tags = Cache::get('tags');
+//        } else {
+//            $tags = Tag::latest()->get();
+//            Cache::put('tags', $tags, 1000);
+//        }
         $tags = Tag::latest()->get();
         return view('admin.Tag.tags',compact('tags'));
     }

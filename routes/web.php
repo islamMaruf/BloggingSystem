@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function ()   {
-    return view('layouts.fontend.master');
+use Illuminate\Support\Facades\Route;
 
+$router = app('router');
+$router->get('/',function (){
+    return view('layouts.fontend.master');
 });
 
 
@@ -29,6 +31,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     ]);
 
     Route::resource('tags','TagController');
+    Route::resource('categories','CategoryController');
 });
 
 
@@ -38,4 +41,4 @@ Route::group(['as'=> 'author.','prefix'=>'author','namespace'=>'Author','middlew
     Route::get('/dashboard','DashboardController@index')->name('dashboard-hit');
 });
 
-$router = app('router');
+
