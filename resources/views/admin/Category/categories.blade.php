@@ -92,16 +92,15 @@ categories
                                         <td>{{$i++}}</td>
                                         <td>{{$category->name}}</td>
                                         <td>{{$category->slug}}</td>
-                                        <td>{{$category->image}}</td>
+                                        <td><img style="border-radius: 50%" width="60px" height="60px" src="{{asset('storage/category/'.$category->image)}}" alt="category"></td>
                                         <td>{{ date('M j, Y h:i a',strtotime($category->created_at)) }}</td>
                                         <td>{{ date('M j, Y h:i a',strtotime($category->updated_at)) }}</td>
-
                                         <td class="td-actions text-center">
                                             <a href="{{route('admin.categories.edit',$category->id)}}" class="btn btn-success btn-round edit"><i
                                                     class="material-icons">edit</i></a>
-                                            <a class="btn btn btn-danger btn-round remove" onclick="deleteTag({{$category->id}})"><i
+                                            <a class="btn btn btn-danger btn-round remove" onclick="deleteCategory({{$category->id}})"><i
                                                     class="material-icons">close</i></a>
-                                            <form id="delete-form-{{$tag->id}}" action="{{route('admin.categories.destroy',$category->id)}}"
+                                            <form id="delete-form-{{$category->id}}" action="{{route('admin.categories.destroy',$category->id)}}"
                                                 method="post" style="display: none">
                                                 @csrf
                                                 @method('DELETE')
@@ -159,29 +158,10 @@ categories
             }
         });
 
-        var table = $('#datatable').DataTable();
 
-        // Edit record
-        table.on('click', '.edit', function () {
-            $tr = $(this).closest('tr');
-            var data = table.row($tr).data();
-            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-        });
-
-        // Delete a record
-        table.on('click', '.remove', function (e) {
-            $tr = $(this).closest('tr');
-            table.row($tr).remove().draw();
-            e.preventDefault();
-        });
-
-        //Like record
-        table.on('click', '.like', function () {
-            alert('You clicked on Like button');
-        });
     });
 
-    function deleteTag(id) {
+    function deleteCategory(id) {
         swal({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

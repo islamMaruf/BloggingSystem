@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+
+use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
 
 class CategoryController extends Controller
 {
@@ -15,16 +21,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->get();
+        $category = Category::latest()->get();
         return view('admin.Category.categories',[
-            'categories'=> $categories
+            'categories'=> $category
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
@@ -34,8 +40,9 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
@@ -43,6 +50,27 @@ class CategoryController extends Controller
             'name'=> 'required|min:3|unique:categories',
             'image' => 'required|mimes:jpg,png,jpeg,bmp'
         ]);
+        $image = $request->file('image');
+        $name = $request->name;
+        $slug = str_slug($request->name);
+        if(isset($image)){
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+            if(!Storage::disk('public')->exists('category')){
+                Storage::disk('public')->makeDirectory('category');
+            }
+            $category = Image::make($image)->resize(1600,479)->stream();
+            Storage::disk('public')->put('category/'.$imageName,$category);
+        }else{
+            $imageName = "default.png";
+        }
+        $category = new Category();
+        $category['name'] = $name;
+        $category['slug']= $slug;
+        $category['image'] = $imageName;
+        $category->save();
+        Toastr::success('Category Successfully Saved' ,'Success');
+        return redirect()->route('admin.categories.index');
 
     }
 
@@ -65,19 +93,54 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        $categories = Category::latest()->get();
+        return view('admin.Category.categories-edit',[
+            'categories'=>$categories,
+            'category' => $category
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request, $id)
+    public function update($request, $id)
     {
-        //
+        $this->validate($request,[
+            'name'=> 'required|min:3|unique:categories',
+            'image' => 'required|mimes:jpg,png,jpeg,bmp'
+        ]);
+        $image = $request->file('image');
+        $name = $request->name;
+        $slug = str_slug($request->name);
+        $category =Category::find($id);
+        if(isset($image)){
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+            if(!Storage::disk('public')->exists('category')){
+                Storage::disk('public')->makeDirectory('category');
+            }
+            if(Storage::disk('public')->exists('category/'.$category->image)){
+                Storage::disk('public')->exists('category/'.$category->image)->delete();
+            }else{
+                $categoryName = Image::make($image)->resize(1600,479)->stream();
+                Storage::disk('public')->put('category/'.$imageName,$categoryName);
+            }
+        }else{
+            $imageName = "default.png";
+        }
+        $category['name'] = $name;
+        $category['slug']= $slug;
+        $category['image'] = $imageName;
+        $category->save();
+        Toastr::success('Category Successfully Updated' ,'Warning');
+        return redirect()->back();
+
     }
 
     /**
