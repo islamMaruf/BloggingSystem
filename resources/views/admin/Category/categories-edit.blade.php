@@ -95,7 +95,6 @@
                                             <td><img style="border-radius: 50%" width="60px" height="60px" src="{{asset('storage/category/'.$category->image)}}" alt="category"></td>
                                             <td>{{ date('M j, Y h:i a',strtotime($category->created_at)) }}</td>
                                             <td>{{ date('M j, Y h:i a',strtotime($category->updated_at)) }}</td>
-
                                         </tr>
                                     @endforeach
 

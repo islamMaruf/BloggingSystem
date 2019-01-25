@@ -109,7 +109,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update($request, $id)
+    public function update(Request $request, $id)
     {
         $this->validate($request,[
             'name'=> 'required|min:3|unique:categories',
@@ -126,11 +126,11 @@ class CategoryController extends Controller
                 Storage::disk('public')->makeDirectory('category');
             }
             if(Storage::disk('public')->exists('category/'.$category->image)){
-                Storage::disk('public')->exists('category/'.$category->image)->delete();
-            }else{
-                $categoryName = Image::make($image)->resize(1600,479)->stream();
-                Storage::disk('public')->put('category/'.$imageName,$categoryName);
+                Storage::disk('public')->delete('category/'.$category->image);
             }
+            $categoryName = Image::make($image)->resize(1600,479)->stream();
+            Storage::disk('public')->put('category/'.$imageName,$categoryName);
+
         }else{
             $imageName = "default.png";
         }
@@ -151,6 +151,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        if(Storage::disk('public')->exists('category/'.$category->image)){
+            Storage::disk('public')->delete('category/'.$category->image);
+        }
+        $category->delete();
+        Toastr::success("Category deleted Successfully");
+        return redirect()->back();
+
     }
 }
