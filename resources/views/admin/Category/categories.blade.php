@@ -5,9 +5,8 @@ categories
 @section('content')
 <div class="content">
     <div class="container-fluid">
-
         <div class="row">
-            <div class="col-md-6 ml-auto mr-auto">
+            <div class="col-md-8 ml-auto mr-auto">
                 <form id="RegisterValidation" action="{{route('admin.categories.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card ">
@@ -24,19 +23,18 @@ categories
                                 <input type="text" class="form-control" required="true" name="name">
                             </div>
                              <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                        <div class="fileinput-new thumbnail">
-                                            <img src="{{asset('assets/back-end/assets/img/image_placeholder.jpg')}}" alt="img_source" height="120px" width="120px">
-                                        </div>
-                                        <div class="fileinput-preview fileinput-exists thumbnail " ></div>
-                                        <div class="text-left">
-                                            <span class="btn btn-primary btn-file">
-                                                <span class="fileinput-new">Select image</span>
-                                                <span class="fileinput-exists">Change</span>
-                                                <input type="file" name="image" />
-                                            </span>
-                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists"
-                                                data-dismiss="filein put"><i class="fa fa-times"></i> Remove</a>
-                                        </div>
+                                <div class="fileinput-new thumbnail">
+                                    <img src="{{asset('assets/back-end/assets/img/image_placeholder.jpg')}}" alt="img_source" height="120px" width="120px">
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail " ></div>
+                                <div class="text-left">
+                                    <span class="btn btn-primary btn-file">
+                                        <span class="fileinput-new">Select image</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="file" name="image" />
+                                    </span>
+
+                                </div>
                              </div>
                         </div>
                         <div class="card-footer text-right">
@@ -46,7 +44,6 @@ categories
                 </form>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto">
                 <div class="card">

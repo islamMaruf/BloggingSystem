@@ -7,7 +7,12 @@
                     <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
                 </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Dashboard</a>
+            @if(Request::is('admin.*'))
+                <a class="navbar-brand" href="{{route('admin.dashboard-hit')}}">Dashboard</a>
+                @else
+                <a class="navbar-brand" href="{{route('author.dashboard-hit')}}">Dashboard</a>
+            @endif
+
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>

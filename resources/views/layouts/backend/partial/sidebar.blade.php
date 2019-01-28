@@ -56,18 +56,26 @@
                 <p> Dashboard </p>
             </a>
         </li>
-        <li class="nav-item {{Request::is('admin/tags') ? 'active':''}}">
+        <li class="nav-item {{Request::is('admin/tags*') ? 'active':''}}">
             <a class="nav-link" href="{{route('admin.tags.index')}}">
                 <i class="material-icons">view_headline</i>
                 <p> Tags </p>
             </a>
         </li>
-        <li class="nav-item {{Request::is('admin/categories') ? 'active':''}}">
+        <li class="nav-item {{Request::is('admin/categories*') ? 'active':''}}">
             <a class="nav-link" href="{{route('admin.categories.index')}}">
                 <i class="material-icons">view_module</i>
                 <p> Categories </p>
             </a>
         </li>
+        <li class="nav-item {{Request::is('admin/posts*') ? 'active':''}}">
+            <a class="nav-link" href="{{route('admin.posts.index')}}">
+                <i class="material-icons">receipt</i>
+                <p> Posts </p>
+            </a>
+        </li>
+
+
 
 
 

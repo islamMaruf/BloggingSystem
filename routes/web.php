@@ -16,8 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 $router = app('router');
 $router->get('/',function (){
-    return view('layouts.fontend.master');
+    return view('layouts.fontend.multiplepost');
+})->name('home');
+
+$router->get('/hello',function (){
+    return view('layouts.fontend.singlePost');
 });
+
 
 
 
@@ -33,11 +38,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
 
     Route::resource('tags','TagController');
     Route::resource('categories','CategoryController');
+    Route::resource('posts','PostController');
 });
-
-
-
-
 Route::group(['as'=> 'author.','prefix'=>'author','namespace'=>'Author','middleware'=>['auth','author']],function (){
     Route::get('/dashboard','DashboardController@index')->name('dashboard-hit');
 });
