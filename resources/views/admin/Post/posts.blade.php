@@ -88,6 +88,9 @@
                                             <td class="td-actions text-center">
                                                 <a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-success btn-round edit"><i
                                                             class="material-icons">edit</i></a>
+                                                <a href="{{route('admin.posts.show',$post->id)}}" class="btn btn-success btn-round edit"><i
+                                                            class="material-icons">info</i></a>
+
                                                 <a class="btn btn btn-danger btn-round remove" onclick="deletePost({{$post->id}})"><i
                                                             class="material-icons">close</i></a>
                                                 <form id="delete-form-{{$post->id}}" action="{{route('admin.posts.destroy',$post->id)}}"
