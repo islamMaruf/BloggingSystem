@@ -119,10 +119,11 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @param  int $id
+     * @return void
      */
-    public function edit($id)
+    public function edit(Post $post,$id)
     {
         //
     }
@@ -130,9 +131,9 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     * @return void
      */
     public function update(Request $request, $id)
     {
@@ -142,11 +143,20 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        if(Storage::disk('public')->exists('post/'.$post->image )){
+            Storage::disk('public')->delete('post/'.$post->image);
+        };
+        $post ->categories()->detach();
+        $post->tags()->detach();
+        $post->delete();
+        Toastr::success('Post Successfully Deleted');
+        return redirect()->back();
+
     }
 }

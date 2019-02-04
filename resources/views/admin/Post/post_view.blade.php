@@ -53,8 +53,13 @@
                                     <p class="card-category">{!! $post->body !!}</p>
                                 </div>
                                 <div class="tab-pane" id="settings">
-                                    <h1>HELLO</h1>
-                                    <img class="img" src="{{asset('storage/post/'.$post->image)}}" alt="post">
+                                    <div class="col-md-6">
+                                        <div class="card card-background" style="background-image: url({{asset('storage/category/laravel-2019-02-04-5c57f81f125bb.jpg')}})">
+                                            <div class="card-body">
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
