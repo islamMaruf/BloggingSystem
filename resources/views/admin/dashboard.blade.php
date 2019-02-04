@@ -13,7 +13,7 @@ dashboard
                             <i class="material-icons">weekend</i>
                         </div>
                         <p class="card-category">Total Post</p>
-                        <h3 class="card-title">184</h3>
+                        <h3 class="card-title">{{$postCount}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -29,7 +29,7 @@ dashboard
                             <i class="material-icons">equalizer</i>
                         </div>
                         <p class="card-category">Total Tags</p>
-                        <h3 class="card-title">75.521</h3>
+                        <h3 class="card-title">{{$tagCount}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -45,7 +45,7 @@ dashboard
                             <i class="material-icons">store</i>
                         </div>
                         <p class="card-category">Total Categories</p>
-                        <h3 class="card-title">$34,245</h3>
+                        <h3 class="card-title">{{$categoryCount}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -77,7 +77,7 @@ dashboard
                             <i class="fa fa-twitter"></i>
                         </div>
                         <p class="card-category">Total authors</p>
-                        <h3 class="card-title">+245</h3>
+                        <h3 class="card-title">{{$authorCount}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
