@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="tab-pane" id="settings">
                                     <div class="col-md-6">
-                                        <div class="card card-background" style="background-image: url({{asset('storage/category/laravel-2019-02-04-5c57f81f125bb.jpg')}})">
+                                        <div class="card card-background" style="background-image: url({{asset('storage/post/'.$post->image)}})">
                                             <div class="card-body">
 
                                             </div>
