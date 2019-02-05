@@ -45,7 +45,7 @@
                         </span>
                                     </label>
                                 </div>
-                                <button type="submit" class="btn btn-info">Submit</button>
+                                <button type="submit" class="btn btn-info">Update</button>
                             </div>
                         </div>
                     </div>
