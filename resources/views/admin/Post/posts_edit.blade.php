@@ -1,6 +1,6 @@
 @extends('layouts.backend.master')
 @section('title')
-editPost
+Post
 @endsection
 @section('content')
 <div class="content">

@@ -81,7 +81,7 @@ class PostController extends Controller
         $post->user_id = Auth::User()->id;
         $post->image = $imageName;
         $post->body = $request->body;
-        if(isset($request->status)){
+        if(isset($request->publish)){
             $post->status = true;
         }else{
             $post->status = false;
@@ -120,12 +120,17 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Post $post
-     * @param  int $id
      * @return void
      */
-    public function edit(Post $post,$id)
+    public function edit(Post $post)
     {
-        //
+        $tags = Tag::all();
+        $category = Category::all();
+        return view('admin.Post.posts_update',[
+            'post'=>$post,
+            'categories'=>$category,
+            'tags'=>$tags
+        ]);
     }
 
     /**

@@ -53,7 +53,7 @@
                                     <p class="card-category">{!! $post->body !!}</p>
                                 </div>
                                 <div class="tab-pane" id="settings">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 ml-auto mr-auto">
                                         <div class="card card-background" style="background-image: url({{asset('storage/post/'.$post->image)}})">
                                             <div class="card-body">
 
