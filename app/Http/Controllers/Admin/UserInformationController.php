@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Information;
 use App\UserInfo;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
@@ -33,7 +34,7 @@ class UserInformationController extends Controller
             'image'=>'required',
             'about'=>'required'
         ]);
-        $user = new UserInfo();
+        $user = new Information();
         $slug = str_slug($request->userName);
 
         $image = $request->file('image');
@@ -51,9 +52,9 @@ class UserInformationController extends Controller
             $imageName = 'default.png';
         }
         $user->userName = $request->userName;
-        $user->firsName = $request->lastName;
-        $user->aboutName=$request->firstName;
-        $user->lastt = $request->about;
+        $user->firstName = $request->firstName;
+        $user->lastName=$request->lastName;
+        $user->about = $request->about;
         $user->city = $request->city;
         $user->country = $request->country;
         $user->address= $request->address;

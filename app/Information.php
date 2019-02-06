@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserInfo extends Model
+class Information extends Model
 {
-    //
     public function user(){
         return $this->belongsTo(User::class);
-    }
+
+}
 }
