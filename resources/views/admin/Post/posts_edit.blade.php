@@ -27,11 +27,11 @@ Post
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" ></div>
                                 <div class="text-left">
-                                            <span class="btn btn-primary btn-file">
-                                                <span class="fileinput-new">Select Title image</span>
-                                                <span class="fileinput-exists">Change</span>
-                                                <input type="file" name="image" />
-                                            </span>
+                                    <span class="btn btn-primary btn-file">
+                                        <span class="fileinput-new">Select Title image</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="file" name="image" />
+                                    </span>
                                 </div>
                             </div>
                         </div>

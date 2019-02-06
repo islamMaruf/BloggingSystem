@@ -137,8 +137,9 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param Post $post
      * @return void
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, Post $post)
     {
@@ -205,8 +206,9 @@ class PostController extends Controller
         $post ->categories()->detach();
         $post->tags()->detach();
         $post->delete();
-        Toastr::success('Post Successfully Deleted');
+        Toastr::success('Post Successfully Deleted','Success');
         return redirect()->back();
 
     }
+
 }

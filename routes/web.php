@@ -39,6 +39,24 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::resource('tags','TagController');
     Route::resource('categories','CategoryController');
     Route::resource('posts','PostController');
+    Route::put('approve/{id}/post',[
+        'uses'=>'DashboardController@approve',
+        'as'=>'approve'
+    ]);
+
+    Route::get('/my-profile',[
+       'uses'=>'UserInformationController@myProfile',
+       'as'=>'profile-hit'
+    ]);
+    Route::get('/my-edit',[
+        'uses'=>'UserInformationController@myEdit',
+        'as'=>'edit-hit'
+    ]);
+
+    Route::get('/profile-store',[
+        'uses'=>'UserInformationController@store'
+    ]);
+
 });
 Route::group(['as'=> 'author.','prefix'=>'author','namespace'=>'Author','middleware'=>['auth','author']],function (){
     Route::get('/dashboard','DashboardController@index')->name('dashboard-hit');

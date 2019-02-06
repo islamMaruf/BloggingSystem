@@ -15,7 +15,7 @@
                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                         <li class="nav-item">
                                             <a class="nav-link active show" href="#profile" data-toggle="tab">
-                                                <i class="material-icons">face</i> Post Info
+                                                <i class="material-icons">edit</i> Post Info
                                                 <div class="ripple-container"></div></a>
                                         </li>
                                         <li class="nav-item">
@@ -25,7 +25,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#settings" data-toggle="tab">
-                                                <i class="material-icons">build</i>Post Image
+                                                <i class="material-icons">panorama</i>Post Image
                                                 <div class="ripple-container"></div></a>
                                         </li>
                                     </ul>
@@ -47,6 +47,17 @@
                                         @foreach($post->categories as $category)
                                         {{$category->name}}
                                         @endforeach</p>
+                                    <h4 class="card-title">Post Status</h4>
+                                    <button disabled class="btn {{$post->status ? 'btn-success' : 'btn-danger' }}">{{$post->status ? 'Published' : 'Not Published' }}</button>
+                                    <h4 class="card-title">Approve Status</h4>
+                                    <button class="btn text-white {{$post->is_approved ? 'btn-primary':'btn-danger'}}" {{$post->is_approved ? 'disabled':''}}  onclick="approveChange({{$post->id}})">{{ $post->is_approved ? 'Approved ':'Not Approved' }}</button>
+                                    <form id="approve-form-{{$post->id}}" action="{{route('admin.approve',$post->id)}}" method="post" style="display: none">
+                                    @csrf
+                                    @method('PUT')
+                                    </form>
+
+
+
 
                                 </div>
                                 <div class="tab-pane" id="messages">
@@ -61,6 +72,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -71,4 +83,14 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        function approveChange(id) {
+            event.preventDefault();
+            document.getElementById('approve-form-'+id).submit();
+
+        }
+    </script>
+@endpush
 

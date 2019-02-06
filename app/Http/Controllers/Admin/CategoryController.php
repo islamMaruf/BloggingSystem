@@ -46,27 +46,14 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=> 'required|min:3|unique:categories',
-            'image' => 'required|mimes:jpg,png,jpeg,bmp'
+            'name'=> 'required|min:3|unique:categories'
+
         ]);
-        $image = $request->file('image');
-        $name = $request->name;
-        $slug = str_slug($request->name);
-        if(isset($image)){
-            $currentDate = Carbon::now()->toDateString();
-            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
-            if(!Storage::disk('public')->exists('category')){
-                Storage::disk('public')->makeDirectory('category');
-            }
-            $category = Image::make($image)->resize(1600,479)->stream();
-            Storage::disk('public')->put('category/'.$imageName,$category);
-        }else{
-            $imageName = "default.png";
-        }
+
         $category = new Category();
-        $category['name'] = $name;
-        $category['slug']= $slug;
-        $category['image'] = $imageName;
+        $category['name'] = $request['name'];
+        $category['slug'] =str_slug($request['name']);
+
         $category->save();
         Toastr::success('Category Successfully Saved' ,'Success');
         return redirect()->route('admin.categories.index');
@@ -76,8 +63,8 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     * @return void
      */
     public function show($id)
     {
@@ -112,30 +99,11 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
             'name'=> 'required|min:3|unique:categories',
-            'image' => 'required|mimes:jpg,png,jpeg,bmp'
-        ]);
-        $image = $request->file('image');
-        $name = $request->name;
-        $slug = str_slug($request->name);
-        $category =Category::find($id);
-        if(isset($image)){
-            $currentDate = Carbon::now()->toDateString();
-            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
-            if(!Storage::disk('public')->exists('category')){
-                Storage::disk('public')->makeDirectory('category');
-            }
-            if(Storage::disk('public')->exists('category/'.$category->image)){
-                Storage::disk('public')->delete('category/'.$category->image);
-            }
-            $categoryName = Image::make($image)->resize(1600,479)->stream();
-            Storage::disk('public')->put('category/'.$imageName,$categoryName);
 
-        }else{
-            $imageName = "default.png";
-        }
-        $category['name'] = $name;
-        $category['slug']= $slug;
-        $category['image'] = $imageName;
+        ]);
+        $category = Category::find($id);
+        $category['name'] = $request['name'];
+        $category['slug']= str_slug($request['name']);
         $category->save();
         Toastr::success('Category Successfully Updated' ,'Warning');
         return redirect()->back();
@@ -151,9 +119,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
-        if(Storage::disk('public')->exists('category/'.$category->image)){
-            Storage::disk('public')->delete('category/'.$category->image);
-        }
         $category->delete();
         Toastr::success("Category deleted Successfully");
         return redirect()->back();

@@ -27,13 +27,13 @@
             <div class="collapse" id="collapseExample">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route('admin.profile-hit')}}">
                             <span class="sidebar-mini"> MP </span>
                             <span class="sidebar-normal"> My Profile </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href={{route('admin.edit-hit')}}>
                             <span class="sidebar-mini"> EP </span>
                             <span class="sidebar-normal"> Edit Profile </span>
                         </a>
@@ -64,7 +64,7 @@
         </li>
         <li class="nav-item {{Request::is('admin/categories*') ? 'active':''}}">
             <a class="nav-link" href="{{route('admin.categories.index')}}">
-                <i class="material-icons">view_module</i>
+                <i class="material-icons">sort</i>
                 <p> Categories </p>
             </a>
         </li>

@@ -17,14 +17,18 @@ class UserTableSeeder extends Seeder
             'role_id' =>1,
             'userName'=> 'admin123',
             'email'=>'admin@blog.com',
-            'password' => bcrypt('root1')
+            'password' => bcrypt('root1'),
+            'created_at'=>now(),
+            'updated_at' =>now()
         ]);
         DB::table('users')->insert([
             'name'=> 'Author',
             'role_id' =>2,
             'userName'=> 'author123',
             'email'=>'author@blog.com',
-            'password' => bcrypt('root1')
+            'password' => bcrypt('root1'),
+            'created_at'=>now(),
+            'updated_at' =>now()
         ]);
 
     }

@@ -6,7 +6,7 @@ categories
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
+            <div class="col-md-6 ml-auto mr-auto">
                 <form id="RegisterValidation" action="{{route('admin.categories.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card ">
@@ -22,20 +22,7 @@ categories
                                 <label for="exampleEmail" class="bmd-label-floating"> Enter Category Name*</label>
                                 <input type="text" class="form-control" required="true" name="name">
                             </div>
-                             <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                <div class="fileinput-new thumbnail">
-                                    <img src="{{asset('assets/back-end/assets/img/image_placeholder.jpg')}}" alt="img_source" height="120px" width="120px">
-                                </div>
-                                <div class="fileinput-preview fileinput-exists thumbnail " ></div>
-                                <div class="text-left">
-                                    <span class="btn btn-primary btn-file">
-                                        <span class="fileinput-new">Select image</span>
-                                        <span class="fileinput-exists">Change</span>
-                                        <input type="file" name="image" />
-                                    </span>
 
-                                </div>
-                             </div>
                         </div>
                         <div class="card-footer text-right">
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -65,7 +52,7 @@ categories
                                         <th>SL</th>
                                         <th>Name</th>
                                         <th>Slug</th>
-                                        <th>Image</th>
+
                                         <th>Created at</th>
                                         <th>Updated at</th>
                                         <th class="disabled-sorting text-center">Actions</th>
@@ -76,7 +63,6 @@ categories
                                         <th>SL</th>
                                         <th> Name</th>
                                         <th>Slug</th>
-                                        <th>Image</th>
                                         <th>Created at</th>
                                         <th>Updated at</th>
                                         <th class="text-center">Actions</th>
@@ -89,7 +75,6 @@ categories
                                         <td>{{$i++}}</td>
                                         <td>{{$category->name}}</td>
                                         <td>{{$category->slug}}</td>
-                                        <td><img width="120px" height="60px" src="{{asset('storage/category/'.$category->image)}}" alt="category"></td>
                                         <td>{{ date('M j, Y h:i a',strtotime($category->created_at)) }}</td>
                                         <td>{{ date('M j, Y h:i a',strtotime($category->updated_at)) }}</td>
                                         <td class="td-actions text-center">
