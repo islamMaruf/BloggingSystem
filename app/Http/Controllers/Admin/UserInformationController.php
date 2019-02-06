@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Information;
-use App\UserInfo;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -24,7 +23,7 @@ class UserInformationController extends Controller
     }
     public function store(Request $request){
         $this->validate($request,[
-            'userName'=>'required|unique:userinfos|max:255',
+            'userName'=>'required|unique:information|max:255',
             'firstName'=>'required',
             'lastName'=>'required',
             'address'=>'required',
