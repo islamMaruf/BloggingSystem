@@ -53,8 +53,9 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
         'as'=>'edit-hit'
     ]);
 
-    Route::get('/profile-store',[
-        'uses'=>'UserInformationController@store'
+    Route::post('/profile-store',[
+        'uses'=>'UserInformationController@store',
+        'as'=>'store-info'
     ]);
 
 });

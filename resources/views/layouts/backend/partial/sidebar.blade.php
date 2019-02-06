@@ -20,7 +20,7 @@
         <div class="user-info">
             <a data-toggle="collapse" href="#collapseExample" class="username">
               <span>
-                <span class="sidebar-normal">{{Auth::User()->name}}</span>
+                <span class="sidebar-normal">Admin</span>
                 <b class="caret"></b>
               </span>
             </a>

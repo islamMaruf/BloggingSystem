@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto">
-                    <form action="{{route('admin.profile.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.store-info')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card">
                             <div class="card-header card-header-icon card-header-primary">
@@ -24,7 +24,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group bmd-form-group">
                                                 <label class="bmd-label-floating">Username</label>
-                                                <input type="text" class="form-control" name="username">
+                                                <input type="text" class="form-control" name="userName">
                                             </div>
                                         </div>
 
