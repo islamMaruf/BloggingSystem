@@ -69,15 +69,25 @@
                                                     <span class="badge badge-pill badge-danger">Not Approved</span>
                                                 @endif()
                                             </td>
+
                                             <td>{{$post->view_count}}</td>
                                             <td>{{ date('M j, Y h:i a',strtotime($post->created_at)) }}</td>
                                             <td>{{ date('M j, Y h:i a',strtotime($post->updated_at)) }}</td>
                                             <td class="td-actions text-center">
                                                 <a href="{{route('author.posts.show',$post->id)}}"
-                                                   class="btn btn-info btn-round edit">
-                                                    <i class="material-icons">visibility</i>
-                                                </a>
+                                                   class="btn btn-info btn-round edit"><i
+                                                            class="material-icons">visibility</i></a>
+                                                <a href="{{route('author.posts.edit',$post->id)}}" class="btn btn-success btn-round edit"><i
+                                                            class="material-icons">edit</i></a>
+                                                <a class="btn btn btn-danger btn-round remove" onclick="deletePost({{$post->id}})"><i
+                                                            class="material-icons">close</i></a>
+                                                <form id="delete-form-{{$post->id}}" action="{{route('author.posts.destroy',$post->id)}}"
+                                                      method="post" style="display: none">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
                                             </td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -95,7 +105,24 @@
 @endsection
 @push('scripts')
     <script>
+        function setFormValidation(id) {
+            $(id).validate({
+                highlight: function (element) {
+                    $(element).closest('.form-group').removeClass('has-success').addClass('has-danger');
+
+                },
+                success: function (element) {
+                    $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
+
+                },
+                errorPlacement: function (error, element) {
+                    $(element).closest('.form-group').append(error);
+                },
+            });
+        }
+
         $(document).ready(function () {
+            setFormValidation('#RegisterValidation');
             $('#datatables').DataTable({
                 "pagingType": "full_numbers",
                 "lengthMenu": [
@@ -111,5 +138,40 @@
 
 
         });
+
+        function deletePost(id) {
+            swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false,
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    event.preventDefault();
+                    document.getElementById('delete-form-' + id).submit();
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === swal.DismissReason.cancel
+                ) {
+                    swal(
+                        'Cancelled',
+                        'Your data is safe :)',
+                        'error'
+                    )
+                }
+            })
+        }
+
     </script>
+    <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
+
 @endpush
+

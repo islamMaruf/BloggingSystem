@@ -59,7 +59,6 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
         'uses'=>'UserInformationController@store',
         'as'=>'store-info'
     ]);
-
     Route::get('/pending',[
         'uses'=>'PendingController@index',
         'as'=> 'pending-post'
