@@ -15,7 +15,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-4 col-md-6">
+                                <div class="col-lg-4 col-md-4">
                                     <!--
                                               color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                                           -->
@@ -37,11 +37,11 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="col-lg-8 col-md-6">
+                                <div class="col-lg-8 col-md-8">
                                     <div class="tab-content">
                                         <div class="tab-pane active show" id="link1">
                                             <div class="row">
-                                                <div class="col-md-8 ml-auto mr-auto">
+                                                <div class="col-md-10 ml-auto mr-auto">
                                                     <div class="card card-profile" style="background-color: #fbe9e7">
                                                         <div class="card-avatar">
                                                             <a>
@@ -68,7 +68,7 @@
 
                                         <div class="tab-pane" id="link2">
                                             <div class="row">
-                                                <div class="col-md-8 ml-auto mr-auto">
+                                                <div class="col-md-10 ml-auto mr-auto">
                                                     <div class="card card-profile" style="background-color: #fbe9e7">
                                                         <div class="card-body text-justify">
                                                             <h4 class="card-title">User Name</h4>
@@ -93,7 +93,7 @@
 
                                         <div class="tab-pane" id="link3">
                                             <div class="row">
-                                                <div class="col-md-8 ml-auto mr-auto">
+                                                <div class="col-md-10 ml-auto mr-auto">
                                                     <div class="card card-profile" style="background-color: #fbe9e7">
                                                         <div class="card-body text-justify text-white">
                                                             <h4 class="card-title">User Email </h4>

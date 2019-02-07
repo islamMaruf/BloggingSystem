@@ -65,7 +65,7 @@
                                     @foreach($posts as $post)
                                         <tr>
                                             <td>{{$i++}}</td>
-                                            <td>{{$post->user->name}}</td>
+                                            <td>{{$post->user->id}}</td>
                                             <td>{{$post->title}}</td>
                                             <td>
                                                 @if($post->status == true)

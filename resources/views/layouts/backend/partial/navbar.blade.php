@@ -8,9 +8,9 @@
                 </button>
             </div>
             @if(Request::is('admin.*'))
-                <a class="navbar-brand" href="{{route('admin.dashboard-hit')}}">Dashboard</a>
+                <a class="navbar-brand" href="{{route('admin.dashboard-hit')}}"></a>
                 @else
-                <a class="navbar-brand" href="{{route('author.dashboard-hit')}}">Dashboard</a>
+                <a class="navbar-brand" href="{{route('author.dashboard-hit')}}"></a>
             @endif
 
         </div>

@@ -46,7 +46,6 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
         'as'=>'status'
     ]);
 
-
     Route::get('/my-profile',[
        'uses'=>'UserInformationController@myProfile',
        'as'=>'profile-hit'
@@ -59,6 +58,11 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::post('/profile-store',[
         'uses'=>'UserInformationController@store',
         'as'=>'store-info'
+    ]);
+
+    Route::get('/pending',[
+        'uses'=>'PendingController@index',
+        'as'=> 'pending-post'
     ]);
 
 });

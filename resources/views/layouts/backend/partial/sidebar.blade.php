@@ -74,8 +74,12 @@
                 <p> Posts </p>
             </a>
         </li>
-
-
+         <li class="nav-item {{Request::is('admin/pending*') ? 'active':''}}">
+            <a class="nav-link" href="{{route('admin.pending-post')}}">
+                <i class="material-icons">table_chart</i>
+                <p> Pending Post </p>
+            </a>
+        </li>
 
 
 
