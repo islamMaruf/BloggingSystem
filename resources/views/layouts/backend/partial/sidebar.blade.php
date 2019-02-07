@@ -25,26 +25,50 @@
               </span>
             </a>
             <div class="collapse" id="collapseExample">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('admin.profile-hit')}}">
-                            <span class="sidebar-mini"> MP </span>
-                            <span class="sidebar-normal"> My Profile </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href={{route('admin.edit-hit')}}>
-                            <span class="sidebar-mini"> EP </span>
-                            <span class="sidebar-normal"> Edit Profile </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <span class="sidebar-mini"> A </span>
-                            <span class="sidebar-normal">{{Auth::User()->role->name}}</span>
-                        </a>
-                    </li>
-                </ul>
+                @if(Auth::user()->role_id ==1)
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.profile-hit')}}">
+                                <span class="sidebar-mini"> MP </span>
+                                <span class="sidebar-normal"> My Profile </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href={{route('admin.edit-hit')}}>
+                                <span class="sidebar-mini"> EP </span>
+                                <span class="sidebar-normal"> Edit Profile </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <span class="sidebar-mini"> A </span>
+                                <span class="sidebar-normal">{{Auth::User()->role->name}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                    @else
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('author.profile-hit')}}">
+                                <span class="sidebar-mini"> MP </span>
+                                <span class="sidebar-normal"> My Profile </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href={{route('author.edit-hit')}}>
+                                <span class="sidebar-mini"> EP </span>
+                                <span class="sidebar-normal"> Edit Profile </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <span class="sidebar-mini"> A </span>
+                                <span class="sidebar-normal">{{Auth::User()->role->name}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                    @endif
+
             </div>
         </div>
     </div>

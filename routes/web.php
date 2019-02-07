@@ -73,6 +73,19 @@ Route::group(['as'=> 'author.','prefix'=>'author','namespace'=>'Author','middlew
         'uses'=>'DashboardController@status',
         'as'=>'status'
     ]);
+    Route::get('/my-profile',[
+        'uses'=>'UserInformationController@myProfile',
+        'as'=>'profile-hit'
+    ]);
+    Route::get('/my-edit',[
+        'uses'=>'UserInformationController@myEdit',
+        'as'=>'edit-hit'
+    ]);
+
+    Route::post('/profile-store',[
+        'uses'=>'UserInformationController@store',
+        'as'=>'store-info'
+    ]);
 });
 
 

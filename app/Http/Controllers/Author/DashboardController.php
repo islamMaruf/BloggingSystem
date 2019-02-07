@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Author;
 
 use App\Post;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index(){
-        return view('author.dashboard');
+        $post = Auth::User()->posts()->latest()->get();
+
+        return view('author.dashboard',[
+            'post'=>$post
+        ]);
     }
     public function status($id)
     {
