@@ -37,24 +37,25 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8 col-md-6">
                                     <div class="tab-content">
                                         <div class="tab-pane active show" id="link1">
                                             <div class="row">
                                                 <div class="col-md-8 ml-auto mr-auto">
-                                                    <div class="card card-profile">
+                                                    <div class="card card-profile" style="background-color: #fbe9e7">
                                                         <div class="card-avatar">
-                                                            <a href="#pablo">
-                                                                <img class="img" src="{{asset('assets/back-end')}}/assets/img/faces/marc.jpg">
+                                                            <a>
+                                                                <img class="img" src="{{asset('storage/userImage/'.$user->profilePhoto)}}">
                                                             </a>
                                                         </div>
-                                                        <div class="card-body">
-                                                            <h6 class="card-category text-gray"></h6>
-                                                            <h4 class="card-title">Alec Thompson</h4>
-                                                            <p class="card-description">
-                                                                Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                                                        <div class="card-body" >
+                                                            <h6 class="card-category text-black-50"></h6>
+                                                            <h4 class="card-title">  {{isset($user->userName) ? $user->userName : '' }}</h4>
+                                                            <p class="card-description text-black-50">
+                                                                {{isset($user->about) ? $user->about : ''}}
                                                             </p>
-                                                            <a href="#pablo" class="btn btn-rose btn-round">Follow</a>
+
+                                                            <a  class="btn btn-primary text-white">{{ Auth::user()->role_id == 1 ? 'admin':'author'}}</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -62,16 +63,41 @@
                                         </div>
 
                                         <div class="tab-pane" id="link2">
-                                            2
+                                            <div class="row">
+                                                <div class="col-md-8 ml-auto mr-auto">
+                                                    <div class="card card-profile" style="background-color: #fbe9e7">
+                                                        <div class="card-body text-justify">
+                                                            <h4 class="card-title">User Name</h4>
+                                                            <p class="card-category">{{$user->userName}}</p>
+                                                            <h4 class="card-title">First Name</h4>
+                                                            <p class="card-category">{{$user->firstName}}</p>
+                                                            <h4 class="card-title">Last Name</h4>
+                                                            <p class="card-category">{{$user->lastName}}</p>
+                                                            <h4 class="card-title">Address</h4>
+                                                            <p class="card-category">{{$user->address}}</p>
+                                                            <h4 class="card-title">City</h4>
+                                                            <p class="card-category">{{$user->city}}</p>
+                                                            <h4 class="card-title">Postal Code</h4>
+                                                            <p class="card-category">{{$user->postal}}</p>
+
+                                                            <h4 class="card-title">Country</h4>
+                                                            <p class="card-category">{{$user->country}}</p>
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="tab-pane" id="link3">
                                             3
                                         </div>
-
-
-
                                     </div>
+
                                 </div>
                             </div>
                         </div>

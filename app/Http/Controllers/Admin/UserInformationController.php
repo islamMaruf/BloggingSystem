@@ -16,7 +16,10 @@ class UserInformationController extends Controller
     //
 
     public function myProfile(){
-        return view('admin.profile.index');
+        $user = Information::where('userId',Auth::user()->id)->first();
+        return view('admin.profile.index',[
+            'user'=>$user
+        ]);
     }
     public function myEdit(){
         return view('admin.profile.edit');
@@ -38,15 +41,13 @@ class UserInformationController extends Controller
 
         $image = $request->file('image');
         if(isset($image)){
-            $currentDate = Carbon::now();
-            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+            $currentDate = Carbon::now()->toDateString();
+            $imageName  = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
             if(!Storage::disk('public')->exists('userImage')){
                 Storage::disk('public')->makeDirectory('userImage');
             }
-            $image = Image::make($image)->resize(1200,720)->stream();
-            Storage::disk('public')->put('userImage/'.$imageName,$image);
-
-
+            $userImage = Image::make($image)->resize(400,400)->stream();
+            Storage::disk('public')->put('userImage/'.$imageName,$userImage);
         }else{
             $imageName = 'default.png';
         }

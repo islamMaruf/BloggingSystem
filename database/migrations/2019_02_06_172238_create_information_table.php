@@ -25,6 +25,7 @@ class CreateInformationTable extends Migration
             $table->string('country');
             $table->string('postal');
             $table->string('profilePhoto')->default('default.png');
+            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

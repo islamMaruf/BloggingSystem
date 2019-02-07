@@ -23,9 +23,6 @@ $router->get('/hello',function (){
     return view('layouts.fontend.singlePost');
 });
 
-
-
-
 Auth::routes();
 
 
