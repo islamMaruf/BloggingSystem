@@ -41,6 +41,12 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
         'as'=>'approve'
     ]);
 
+    Route::put('status/{id}/post',[
+        'uses'=>'DashboardController@status',
+        'as'=>'status'
+    ]);
+
+
     Route::get('/my-profile',[
        'uses'=>'UserInformationController@myProfile',
        'as'=>'profile-hit'

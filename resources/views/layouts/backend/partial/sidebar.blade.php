@@ -15,12 +15,12 @@
     <div class="sidebar-wrapper">
     <div class="user">
         <div class="photo">
-            <img src="{{asset('assets/back-end')}}/assets/img/faces/avatar.jpg" />
+            <img src="{{asset('storage/userImage/default.png')}}" />
         </div>
         <div class="user-info">
             <a data-toggle="collapse" href="#collapseExample" class="username">
               <span>
-                <span class="sidebar-normal">Admin</span>
+                <span class="sidebar-normal">{{Auth::User()->role_id == 1 ? 'Admin':'Author'}}</span>
                 <b class="caret"></b>
               </span>
             </a>

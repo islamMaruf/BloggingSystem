@@ -35,4 +35,19 @@ class DashboardController extends Controller
         }
         return redirect()->back();
     }
+
+    public function status($id){
+        $post = Post::find($id);
+        if($post->status ==false){
+            $post->status = true;
+            $post->save();
+            Toastr::success('Post is published','Success');
+        }else{
+            Toastr::success('Post already published','Info');
+
+        }
+        return redirect()->back();
+
+
+    }
 }
