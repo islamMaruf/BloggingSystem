@@ -92,6 +92,13 @@
                 <p> Dashboard </p>
             </a>
         </li>
+        <li class="nav-item {{Request::is('author/posts*') ? 'active':''}}">
+            <a class="nav-link" href="{{route('author.posts.index')}}">
+                <i class="material-icons">receipt</i>
+                <p> Posts </p>
+            </a>
+        </li>
+
         @endif
 
 

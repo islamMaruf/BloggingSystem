@@ -36,7 +36,8 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
-    public function status($id){
+    public function status($id)
+    {
         $post = Post::find($id);
         if($post->status ==false){
             $post->status = true;
@@ -47,7 +48,5 @@ class DashboardController extends Controller
 
         }
         return redirect()->back();
-
-
     }
 }
