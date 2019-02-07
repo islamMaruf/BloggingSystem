@@ -49,13 +49,13 @@
                                         @endforeach</p>
                                     <h4 class="card-title">Post Status</h4>
                                     <button  {{$post->status ?'disabled' : '' }} class="btn {{$post->status ? 'btn-success' : 'btn-danger' }}  " onclick="statusChange({{$post->id}})">{{$post->status ? 'Published' : 'Not Published' }}</button>
-                                    <form id="status-form-{{$post->id}}" action="{{route('a.status',$post->id)}}" method="post" style="display: none">
+                                    <form id="status-form-{{$post->id}}" action="{{route('author.status',$post->id)}}" method="post" style="display: none">
                                         @csrf
                                         @method('PUT')
                                     </form>
                                     <h4 class="card-title">Approve Status</h4>
                                     <button class="btn text-white {{$post->is_approved ? 'btn-primary':'btn-danger'}}" disabled >{{ $post->is_approved ? 'Approved ':'Not Approved' }}</button>
-                                    
+
 
 
 
