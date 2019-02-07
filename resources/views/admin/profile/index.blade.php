@@ -45,14 +45,18 @@
                                                     <div class="card card-profile" style="background-color: #fbe9e7">
                                                         <div class="card-avatar">
                                                             <a>
-                                                                <img class="img" src="{{asset('storage/userImage/'.$user->profilePhoto)}}">
+                                                                @if(isset($user->profilePhoto))
+                                                                <img class="img" src="{{ asset('storage/userImage/'.$user->profilePhoto)}}">
+                                                                @else
+                                                                <img class="img" src="{{ asset('storage/userImage/default.png')}}">
+                                                                @endif
                                                             </a>
                                                         </div>
                                                         <div class="card-body" >
                                                             <h6 class="card-category text-black-50"></h6>
-                                                            <h4 class="card-title">  {{isset($user->userName) ? $user->userName : '' }}</h4>
+                                                            <h4 class="card-title">  {{$user->name ?? ''}}</h4>
                                                             <p class="card-description text-black-50">
-                                                                {{isset($user->about) ? $user->about : ''}}
+                                                                {{ $user->about ?? ''}}
                                                             </p>
 
                                                             <a  class="btn btn-primary text-white">{{ Auth::user()->role_id == 1 ? 'admin':'author'}}</a>
@@ -68,25 +72,19 @@
                                                     <div class="card card-profile" style="background-color: #fbe9e7">
                                                         <div class="card-body text-justify">
                                                             <h4 class="card-title">User Name</h4>
-                                                            <p class="card-category">{{$user->userName}}</p>
+                                                            <p class="card-category">{{$user->userName ?? ''}}</p>
                                                             <h4 class="card-title">First Name</h4>
-                                                            <p class="card-category">{{$user->firstName}}</p>
+                                                            <p class="card-category">{{$user->firstName ?? ''}}</p>
                                                             <h4 class="card-title">Last Name</h4>
-                                                            <p class="card-category">{{$user->lastName}}</p>
+                                                            <p class="card-category">{{$user->lastName ?? ''}}</p>
                                                             <h4 class="card-title">Address</h4>
-                                                            <p class="card-category">{{$user->address}}</p>
+                                                            <p class="card-category">{{$user->address ?? ''}}</p>
                                                             <h4 class="card-title">City</h4>
-                                                            <p class="card-category">{{$user->city}}</p>
+                                                            <p class="card-category">{{$user->city ?? ''}}</p>
                                                             <h4 class="card-title">Postal Code</h4>
-                                                            <p class="card-category">{{$user->postal}}</p>
-
+                                                            <p class="card-category">{{$user->postal ?? ''}}</p>
                                                             <h4 class="card-title">Country</h4>
-                                                            <p class="card-category">{{$user->country}}</p>
-
-
-
-
-
+                                                            <p class="card-category">{{$user->country ?? '' }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -94,7 +92,16 @@
                                         </div>
 
                                         <div class="tab-pane" id="link3">
-                                            3
+                                            <div class="row">
+                                                <div class="col-md-8 ml-auto mr-auto">
+                                                    <div class="card card-profile" style="background-color: #fbe9e7">
+                                                        <div class="card-body text-justify text-white">
+                                                            <h4 class="card-title">User Email </h4>
+                                                            <p class="card-category">{{$user->userName ?? ''}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
