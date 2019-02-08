@@ -15,7 +15,7 @@ class CreateInformationTable extends Migration
     {
         Schema::create('information', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('userId');
+            $table->unsignedInteger('user_id');
             $table->text('about');
             $table->string('userName');
             $table->string('firstName');
@@ -25,7 +25,7 @@ class CreateInformationTable extends Migration
             $table->string('country');
             $table->string('postal');
             $table->string('profilePhoto')->default('default.png');
-            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

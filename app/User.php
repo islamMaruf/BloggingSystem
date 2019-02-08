@@ -34,9 +34,8 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany(Post::class);
     }
-
     public function info(){
-        return $this->hasOne(Information::class);
+        return $this->belongsTo(User::class, 'userId', 'id');
     }
 
 
