@@ -71,6 +71,7 @@
                                 <span class="sidebar-normal">{{Auth::User()->role->name}}</span>
                             </a>
                         </li>
+
                     </ul>
                     @endif
 
@@ -109,6 +110,13 @@
                 <p> Pending Post </p>
             </a>
         </li>
+        <li class="nav-item {{Request::is('admin/subscriber*') ? 'active':''}}">
+            <a class="nav-link" href="{{route('admin.subscriber')}}">
+                <i class="material-icons">subscriptions</i>
+                <p> Subscriber </p>
+            </a>
+        </li>
+
 
 
 

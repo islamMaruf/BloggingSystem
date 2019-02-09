@@ -27,6 +27,8 @@ Auth::routes();
 
 
 
+Route::post('subscriber','SubscriberController@store')->name('subscriber.store');
+
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=> ['auth','admin']],function (){
     Route::get('/dashboard',[
         'uses'=> 'DashboardController@index',
@@ -62,6 +64,13 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::get('/pending',[
         'uses'=>'PendingController@index',
         'as'=> 'pending-post'
+    ]);
+    Route::get('/subscriber',[
+        'uses'=> 'SubscriberController@index',
+        'as'=>'subscriber'
+    ]);
+    Route::post('/subscriber',[
+        'uses' =>'SubscriberController@'
     ]);
 
 });

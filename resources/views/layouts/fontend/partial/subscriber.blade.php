@@ -9,7 +9,8 @@
             </div>
             <div class="card card-raised card-form-horizontal">
                 <div class="card-body ">
-                    <form method="" action="#">
+                    <form method="post" action="{{route('subscriber.store')}}">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-8 col-md-6 ">
                           <span class="bmd-form-group"><div class="input-group">
@@ -18,11 +19,11 @@
                                 <i class="material-icons">mail</i>
                               </span>
                             </div>
-                            <input type="email" value="" placeholder="Your Email..." class="form-control">
+                            <input type="email" value="" name="email" placeholder="Your Email..." class="form-control">
                           </div></span>
                             </div>
                             <div class="col-lg-4 col-md-6 ">
-                                <button type="button" class="btn btn-primary btn-block">Subscribe</button>
+                                <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
                             </div>
                         </div>
                     </form>
