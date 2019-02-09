@@ -73,7 +73,7 @@
                                             <td>{{ date('M j, Y h:i a',strtotime($post->created_at)) }}</td>
                                             <td>{{ date('M j, Y h:i a',strtotime($post->updated_at)) }}</td>
                                             <td class="td-actions text-center">
-                                                <a href="{{route('author.posts.show',$post->id)}}"
+                                                <a href="{{route('admin.posts.show',$post->id)}}"
                                                    class="btn btn-info btn-round edit">
                                                     <i class="material-icons">visibility</i>
                                                 </a>
