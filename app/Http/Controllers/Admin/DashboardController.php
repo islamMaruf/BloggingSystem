@@ -16,11 +16,13 @@ class DashboardController extends Controller
         $totalCategory = Category::count();
         $totalTag = Tag::count();
         $totalAuthor = User::where('role_id',2)->count();
+        $totalPendingPost = Post::where('is_approved',false)->count();
         return view('admin.dashboard',[
             'postCount' => $totalPost,
             'categoryCount' => $totalCategory,
             'authorCount'=>$totalAuthor,
-            'tagCount'=>$totalTag
+            'tagCount'=>$totalTag,
+            'pendingPostCount'=>$totalPendingPost
         ]);
     }
 

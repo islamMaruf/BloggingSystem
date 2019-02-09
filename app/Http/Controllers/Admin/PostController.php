@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Information;
 use App\Post;
 use App\Tag;
 use Brian2694\Toastr\Facades\Toastr;
@@ -22,7 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::latest()->get();
+        $post = Post::where('is_approved',true)->latest()->get();
         return view('admin.Post.posts',[
             'posts'=>$post
         ]);
