@@ -22,9 +22,12 @@ class PostController extends Controller
      */
     public function index()
     {
-       $posts = Auth::user()->posts()->latest()->get();
-        return view('author.Post.posts',[
-            'posts'=>$posts
+        $posts = Post::with('user.info')->where('is_approved', true)
+            ->where('user_id',Auth::user()->id)
+            ->latest()
+            ->get();
+        return view('admin.Post.posts', [
+            'posts' => $posts
         ]);
     }
 

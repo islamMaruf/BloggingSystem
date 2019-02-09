@@ -15,7 +15,12 @@
     <div class="sidebar-wrapper">
     <div class="user">
         <div class="photo">
-            {{--<img src="{{asset('storage/userImage/'.Auth::User()->info->profilePhoto->get())}}" />--}}
+            @if(isset(Auth::User()->info->profilePhoto))
+                <img src="{{asset('storage/userImage/'.Auth::User()->info->profilePhoto)}}" />
+            @else
+                <img src="{{asset('image/default.png')}}" />
+            @endif
+
         </div>
         <div class="user-info">
             <a data-toggle="collapse" href="#collapseExample" class="username">

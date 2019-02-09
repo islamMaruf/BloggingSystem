@@ -48,12 +48,17 @@
                                             <span class="badge badge-pill badge-warning">{{ $category->name}}</span>
 
                                         @endforeach</p>
-                                    <h4 class="card-title">Post Status</h4>
-                                    <button  {{$post->status ?'disabled' : '' }} class="btn {{$post->status ? 'btn-success' : 'btn-danger' }}  " onclick="statusChange({{$post->id}})">{{$post->status ? 'Published' : 'Not Published' }}</button>
-                                    <form id="status-form-{{$post->id}}" action="{{route('admin.status',$post->id)}}" method="post" style="display: none">
-                                        @csrf
-                                        @method('PUT')
-                                    </form>
+
+                                        @if($post->user->id == Auth::User()->id)
+                                            <button  {{ $post->status  ? 'disabled' : '' }} class="btn {{$post->status ? 'btn-success' : 'btn-danger' }}  " onclick="statusChange({{$post->id}})">{{$post->status ? 'Published' : 'Not Published' }}</button>
+                                            <form id="status-form-{{$post->id}}" action="{{route('admin.status',$post->id)}}" method="post" style="display: none">
+                                                @csrf
+                                                @method('PUT')
+                                            </form>
+                                        @else
+                                            <button disabled class="btn {{$post->status ? 'btn-success' : 'btn-danger' }}"> {{$post->status ? 'Published' : 'Not Published' }} </button>
+                                        @endif
+
                                     <h4 class="card-title">Approve Status</h4>
                                     <button class="btn text-white {{$post->is_approved ? 'btn-primary':'btn-danger'}}" {{$post->is_approved ? 'disabled':''}}  onclick="approveChange({{$post->id}})">{{ $post->is_approved ? 'Approved ':'Not Approved' }}</button>
                                     <form id="approve-form-{{$post->id}}" action="{{route('admin.approve',$post->id)}}" method="post" style="display: none">

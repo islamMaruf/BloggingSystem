@@ -9,6 +9,6 @@ class Information extends Model
     protected $table = 'information';
 
     public function user(){
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }

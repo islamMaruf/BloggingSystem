@@ -65,8 +65,8 @@
                                     @foreach($posts as $post)
                                         <tr>
                                             <td>{{$i++}}</td>
-                                            <td>{{$post->user->id }}</td>
-                                            <td>{{$post->title}}</td>
+                                            <td>{{$post->user->info->firstName ?? 'N/A' }}</td>
+                                            <td>{{ str_limit($post->title,10) }}</td>
                                             <td>
                                                 @if($post->status == true)
                                                     <span class="badge badge-pill badge-success">Published</span>

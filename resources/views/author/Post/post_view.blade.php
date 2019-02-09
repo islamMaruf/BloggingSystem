@@ -40,12 +40,12 @@
                                     <h4 class="card-title">Post Tags</h4>
                                     <p class="card-category">
                                         @foreach($post->tags as $tag)
-                                        {{$tag->tagName}} @if($loop->last)  @else , @endif
+                                            <span class="badge badge-pill badge-success">{{ $tag->tagName}}</span>
                                         @endforeach</p>
                                     <h4 class="card-title">Post Categories</h4>
                                     <p class="card-category">
                                         @foreach($post->categories as $category)
-                                        {{$category->name}}
+                                            <span class="badge badge-pill badge-warning">{{ $category->name}}</span>
                                         @endforeach</p>
                                     <h4 class="card-title">Post Status</h4>
                                     <button  {{$post->status ?'disabled' : '' }} class="btn {{$post->status ? 'btn-success' : 'btn-danger' }}  " onclick="statusChange({{$post->id}})">{{$post->status ? 'Published' : 'Not Published' }}</button>

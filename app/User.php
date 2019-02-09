@@ -35,7 +35,7 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
     public function info(){
-        return $this->belongsTo(Information::class, 'user_id', 'id');
+        return $this->hasOne(Information::class,'user_id','id');
     }
 
 

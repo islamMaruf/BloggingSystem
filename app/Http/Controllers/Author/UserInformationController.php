@@ -14,8 +14,8 @@ use Intervention\Image\Facades\Image;
 class UserInformationController extends Controller
 {
     public function myProfile(){
-        $user = Information::where('userId',Auth::user()->id)->first();
-        return view('admin.profile.index',[
+        $user = Information::where('user_id',Auth::user()->id)->first();
+        return view('author.profile.index',[
             'user'=>$user
         ]);
     }
@@ -58,7 +58,7 @@ class UserInformationController extends Controller
         $user->country = $request->country;
         $user->address= $request->address;
         $user->postal= $request->postal;
-        $user-> user_id = Auth::User()->id;
+        $user->user_id= Auth::User()->id;
         $user->profilePhoto = $imageName;
         $user->save();
         Toastr::success('Your profile updated successfully');
