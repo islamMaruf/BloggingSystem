@@ -32,7 +32,8 @@ class UserInformationController extends Controller
             'country'=>'required',
             'postal'=>'required',
             'image'=>'required',
-            'about'=>'required'
+            'about'=>'required',
+
         ]);
         $user = new Information();
         $slug = str_slug($request->userName);
@@ -57,7 +58,7 @@ class UserInformationController extends Controller
         $user->country = $request->country;
         $user->address= $request->address;
         $user->postal= $request->postal;
-        $user->userId = Auth::User()->id;
+        $user-> user_id = Auth::User()->id;
         $user->profilePhoto = $imageName;
         $user->save();
         Toastr::success('Your profile updated successfully');

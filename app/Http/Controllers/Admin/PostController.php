@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
-use App\Information;
 use App\Post;
 use App\Tag;
 use Brian2694\Toastr\Facades\Toastr;
@@ -23,9 +22,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::where('is_approved',true)->latest()->get();
+        $posts = Post::with('user.info')->where('is_approved',true)->latest()->get();
         return view('admin.Post.posts',[
-            'posts'=>$post
+            'posts'=>$posts
         ]);
     }
 
@@ -76,7 +75,7 @@ class PostController extends Controller
             $imageName = 'default.png';
         }
         $post = new Post();
-        $post->title = $request->title;
+        $post->title =  ucfirst($request->title);
         $post->slug = $slug;
         $post->user_id = Auth::User()->id;
         $post->image = $imageName;

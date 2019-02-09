@@ -51,7 +51,7 @@ class TagController extends Controller
            'name' => 'required|min:3'
         ]);
        $tag = new Tag();
-       $tag->tagName = $request->name;
+       $tag->tagName = ucfirst($request->name);
        $tag->tagSlug = str_slug($request->name);
        $tag->save();
        Toastr::success('Tag created successfully','Success');
