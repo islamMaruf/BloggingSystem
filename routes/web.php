@@ -70,7 +70,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
         'as'=>'subscriber'
     ]);
     Route::post('/subscriber',[
-        'uses' =>'SubscriberController@'
+        'uses' =>'SubscriberController@destroy',
+        'as'=>'subscriber'
     ]);
 
 });
