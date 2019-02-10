@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class SendNotificationSubscriber extends Notification
+class SendNotificationSubscriber extends Notification implements ShouldQueue
 {
     use Queueable;
     public $post;
@@ -47,7 +47,7 @@ class SendNotificationSubscriber extends Notification
                     ->subject('New post published')
                     ->line('New Post published by '.Information::find($this->post->user->id)->firstName.' '.Information::find($this->post->user->id)->lastName)
                     ->line($this->post->title)
-                    ->action('view', url('/'))
+                    ->action('view', url(route('home')))
                     ->line('Thank you for using our application!');
     }
 
