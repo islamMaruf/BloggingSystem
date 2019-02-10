@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NewAuthorPost extends Notification
+class SendNotificationSubscriber extends Notification
 {
     use Queueable;
     public $post;
@@ -21,8 +21,6 @@ class NewAuthorPost extends Notification
     public function __construct($post)
     {
         $this->post = $post;
-
-
     }
 
     /**
@@ -45,11 +43,11 @@ class NewAuthorPost extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Hello, Admin')
-                    ->subject('New Post Approval Needed')
-                    ->line('New post by '.Information::find($this->post->user->id)->firstName.' '.Information::find($this->post->user->id)->lastName.' need to approve')
-                    ->line('To approve the post click view button')
-                    ->action('View', url(route('admin.posts.show',$this->post->id)))
+                    ->greeting('Hello Subscriber')
+                    ->subject('New post published')
+                    ->line('New Post published by '.Information::find($this->post->user->id)->firstName.' '.Information::find($this->post->user->id)->lastName)
+                    ->line($this->post->title)
+                    ->action('view', url('/'))
                     ->line('Thank you for using our application!');
     }
 

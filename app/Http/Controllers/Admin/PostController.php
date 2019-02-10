@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Notifications\SendNotificationSubscriber;
 use App\Post;
+use App\Subscriber;
 use App\Tag;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -95,6 +99,12 @@ class PostController extends Controller
         $post->categories()->attach($request->category);
         $post->tags()->attach($request->tag);
         Toastr::success('Post Successfully Saved' ,'Success');
+        $subscribers = Subscriber::all();
+        foreach ($subscribers as $subscriber){
+            Notification::route('mail',$subscriber->email)
+            ->notify(new SendNotificationSubscriber($post));
+        }
+
         return redirect()->route('admin.posts.index');
 
 

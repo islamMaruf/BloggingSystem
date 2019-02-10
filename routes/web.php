@@ -22,11 +22,7 @@ $router->get('/',function (){
 $router->get('/hello',function (){
     return view('layouts.fontend.singlePost');
 });
-
 Auth::routes();
-
-
-
 Route::post('subscriber','SubscriberController@store')->name('subscriber.store');
 
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=> ['auth','admin']],function (){
