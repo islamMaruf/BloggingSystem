@@ -61,7 +61,7 @@ class UserInformationController extends Controller
         $user->postal= $request->postal;
         $user->user_id = Auth::User()->id;
         $user->profilePhoto = $imageName;
-
+        $user->save();
         Toastr::success('Your profile updated successfully');
         return redirect()->route('admin.profile-hit');
 

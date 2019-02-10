@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Author;
 
 use App\Category;
+use App\Notifications\NewAuthorPost;
 use App\Post;
 use App\Tag;
+use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -22,11 +25,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user.info')->where('is_approved', true)
+        $posts = Post::with('user.info')
             ->where('user_id',Auth::user()->id)
             ->latest()
             ->get();
-        return view('admin.Post.posts', [
+        return view('author.Post.posts', [
             'posts' => $posts
         ]);
     }
@@ -96,6 +99,8 @@ class PostController extends Controller
         $post->save();
         $post->categories()->attach($request->category);
         $post->tags()->attach($request->tag);
+        $user = User::where('role_id',1)->get();
+        Notification::send($user, new NewAuthorPost($post));
         Toastr::success('Post Successfully Saved' ,'Success');
         return redirect()->route('author.posts.index');
     }

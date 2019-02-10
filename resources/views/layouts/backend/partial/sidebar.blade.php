@@ -116,12 +116,8 @@
                 <p> Subscriber </p>
             </a>
         </li>
-
-
-
-
-
         @endif
+
         @if(Request::is('author*'))
         <li class="nav-item {{Request::is('author/dashboard') ? 'active':''}}">
             <a class="nav-link" href="{{route('author.dashboard-hit')}}">
@@ -135,13 +131,7 @@
                 <p> Posts </p>
             </a>
         </li>
-
         @endif
-
-
-
-
-
     </ul>
 </div>
 </div>

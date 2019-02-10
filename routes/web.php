@@ -69,9 +69,9 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
         'uses'=> 'SubscriberController@index',
         'as'=>'subscriber'
     ]);
-    Route::post('/subscriber',[
+    Route::delete('/subscriber/delete/{id}',[
         'uses' =>'SubscriberController@destroy',
-        'as'=>'subscriber'
+        'as'=>'subscriber.delete'
     ]);
 
 });

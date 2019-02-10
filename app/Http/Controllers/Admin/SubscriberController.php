@@ -19,8 +19,8 @@ class SubscriberController extends Controller
     }
 
     public function destroy($id){
-        $subscriber = Subscriber::find($id);
-        $subscriber->delete();
+         Subscriber::findOrFail($id)->delete();
+
         Toastr::success('Subscriber deleted successfully','Success');
         return redirect()->back();
 

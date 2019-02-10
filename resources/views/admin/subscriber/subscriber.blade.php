@@ -51,7 +51,7 @@
                                             <td class="td-actions text-center">
                                                 <a class="btn btn btn-danger btn-round remove" onclick="deletePost({{$subscriber->id}})"><i
                                                             class="material-icons">close</i></a>
-                                                <form id="delete-form-{{$subscriber->id}}" action="{{route('admin.subscriber',$subscriber->id)}}"
+                                                <form id="delete-form-{{$subscriber->id}}" action="{{route('admin.subscriber.delete',$subscriber->id)}}"
                                                       method="post" style="display: none">
                                                     @csrf
                                                     @method('DELETE')
