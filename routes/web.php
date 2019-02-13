@@ -14,26 +14,25 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-$router = app('router');
-$router->get('/',function (){
-    return view('layouts.fontend.multiplepost');
-})->name('home');
 
-$router->get('/hello',function (){
-    return view('layouts.fontend.singlePost');
-});
+Route::get('/',[
+   'uses'=> 'HomeController@index',
+   'as'=>'home-index'
+]);
+
 Auth::routes();
 Route::post('subscriber','SubscriberController@store')->name('subscriber.store');
 
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=> ['auth','admin']],function (){
+
     Route::get('/dashboard',[
         'uses'=> 'DashboardController@index',
         'as'=> 'dashboard-hit'
     ]);
-
     Route::resource('tags','TagController');
     Route::resource('categories','CategoryController');
     Route::resource('posts','PostController');
+    Route::resource('users','UserController');
     Route::put('approve/{id}/post',[
         'uses'=>'DashboardController@approve',
         'as'=>'approve'

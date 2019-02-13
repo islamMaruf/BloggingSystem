@@ -23,7 +23,7 @@ Post
                             </div>
                             <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail">
-                                    <img class="img-thumbnail" src="{{asset('assets/back-end/assets/img/image_placeholder.jpg')}}" alt="img_source" height="60px" width="280px">
+                                    <img src="{{asset('assets/back-end/assets/img/image_placeholder.jpg')}}" alt="img_source" height="160px" width="120px">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" ></div>
                                 <div class="text-left">

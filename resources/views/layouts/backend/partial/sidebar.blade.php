@@ -50,6 +50,7 @@
                                 <span class="sidebar-normal">{{Auth::User()->role->name}}</span>
                             </a>
                         </li>
+
                     </ul>
                     @else
                     <ul class="nav">
@@ -116,6 +117,13 @@
                 <p> Subscriber </p>
             </a>
         </li>
+        <li class="nav-item {{Request::is('admin/users*') ? 'active':''}}">
+            <a class="nav-link" href="{{route('admin.users.index')}}">
+                <i class="material-icons">people</i>
+                <p> User List </p>
+            </a>
+        </li>
+
         @endif
 
         @if(Request::is('author*'))
@@ -131,6 +139,7 @@
                 <p> Posts </p>
             </a>
         </li>
+
         @endif
     </ul>
 </div>

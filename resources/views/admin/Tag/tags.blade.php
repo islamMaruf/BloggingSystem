@@ -19,7 +19,6 @@ tags
                         </div>
                         <div class="card-body ">
                             <div class="form-group">
-                                @csrf
                                 <label for="exampleEmail" class="bmd-label-floating"> Enter Tag Name*</label>
                                 <input type="text" class="form-control" id="exampleName" required="true" name="name">
                             </div>
@@ -127,6 +126,8 @@ tags
     }
 
     $(document).ready(function () {
+        //ajax call
+
         setFormValidation('#RegisterValidation');
         $('#datatables').DataTable({
             "pagingType": "full_numbers",
@@ -141,26 +142,6 @@ tags
             }
         });
 
-        var table = $('#datatable').DataTable();
-
-        // Edit record
-        table.on('click', '.edit', function () {
-            $tr = $(this).closest('tr');
-            var data = table.row($tr).data();
-            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-        });
-
-        // Delete a record
-        table.on('click', '.remove', function (e) {
-            $tr = $(this).closest('tr');
-            table.row($tr).remove().draw();
-            e.preventDefault();
-        });
-
-        //Like record
-        table.on('click', '.like', function () {
-            alert('You clicked on Like button');
-        });
     });
 
     function deleteTag(id) {

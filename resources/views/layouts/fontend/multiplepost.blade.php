@@ -22,15 +22,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#pill2" data-toggle="tab">World</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#pill3" data-toggle="tab">Arts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#pill3" data-toggle="tab">Tech</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#pill3" data-toggle="tab">Business</a>
-                    </li>
+
                 </ul>
                 <div class="tab-content tab-space">
                     <div class="tab-pane active" id="pill1">
@@ -107,7 +99,7 @@
                                         <a href="#pablito">
                                             <img class="img" src="{{asset('assets/font-end')}}/assets/img/examples/card-blog4.jpg">
                                         </a>
-                                        <div class="colored-shadow" style="background-image: url(&quot;{{asset('assets/font-end')}}/assets/img/examples/card-blog4.jpg&quot;); opacity: 1;"></div></div>
+                                        <div class="colored-shadow" style="background-image: url({{asset('assets/font-end')}}/assets/img/examples/card-blog4.jpg&quot;); opacity: 1;"></div></div>
                                 </div>
                                 <div class="col-md-7">
                                     <h6 class="card-category text-info">Enterprise</h6>

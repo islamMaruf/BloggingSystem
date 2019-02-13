@@ -16,9 +16,6 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
-                                    <!--
-                                              color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
-                                          -->
                                     <ul class="nav nav-pills nav-pills-primary nav-pills-icons flex-column" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active show" data-toggle="tab" href="#link1" role="tablist">
