@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Author;
 
 use App\Post;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller

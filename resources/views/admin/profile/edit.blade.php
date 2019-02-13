@@ -75,8 +75,8 @@
                                         <div class="col-md-4">
                                             <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail">
-                                                    <img class="img-thumbnail" src="{{asset('assets/back-end/assets/img/image_placeholder.jpg')}}"
-                                                         alt="img_source" height="120px" width="120px">
+                                                    <img height="120px" width="120px"  src="{{asset('assets/back-end/assets/img/image_placeholder.jpg')}}"
+                                                         alt="img_source">
                                                 </div>
                                                 <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                 <div class="text-left">
@@ -92,7 +92,7 @@
                                             <div class="form-group">
                                                 <label>About Me</label>
                                                 <div class="form-group bmd-form-group">
-                                                    <textarea class="form-control" rows="5" name="about"></textarea>
+                                                    <textarea class="form-control" rows="4" name="about"></textarea>
                                                 </div>
                                             </div>
                                         </div>
