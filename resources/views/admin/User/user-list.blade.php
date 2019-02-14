@@ -51,7 +51,7 @@
                                         <tr>
                                             <td>{{$i++}}</td>
                                             <td>{{ $user->info->firstName ? $user->info->firstName.' '.$user->info->lastName : 'N/A'}} </td>
-                                            <td>14</td>
+                                            <td>{{}}</td>
                                             <td>15</td>
                                             <td>25</td>
                                             <td>{{$user->posts->count()}}</td>
