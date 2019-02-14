@@ -7,7 +7,7 @@ use App\Post;
 class HomeController extends Controller
 {
     public function index(){
-        $posts =  Post::with('tags','categories','user.info')->where('status',1)->where('is_approved',1)->get();
+        $posts =  Post::with('categories','user.info')->where('status',1)->where('is_approved',1)->get();
         return view('layouts.fontend.multiplepost',[
             'posts'=>$posts
         ]);
