@@ -12,7 +12,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h4 class="card-title">User List<a class="btn-sm btn btn-warning ml-1">{{$users->count()}}</a></h4>
+                            <h4 class="card-title">Author List<a class="btn-sm btn btn-warning ml-1">{{$users->count()}}</a></h4>
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
@@ -74,7 +74,6 @@
 @endsection
 @push('scripts')
     <script>
-
         $(document).ready(function () {
             $('#datatables').DataTable({
                 "pagingType": "full_numbers",
@@ -88,12 +87,7 @@
                     searchPlaceholder: "Search records",
                 }
             });
-
-
         });
-
-
-
     </script>
     <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
 
