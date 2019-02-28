@@ -20,7 +20,6 @@ class UserTableSeeder extends Seeder
             'created_at'=> now(),
             'updated_at'=>now()
         ]);
-
         DB::table('users')->insert([
             'role_id'=> 2,
             'email'=>'author@blog.com',

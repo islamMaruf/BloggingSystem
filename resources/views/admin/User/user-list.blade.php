@@ -50,11 +50,11 @@
                                     @foreach($users as $user)
                                         <tr>
                                             <td>{{$i++}}</td>
-                                            <td>{{ $user->info->firstName ? $user->info->firstName.' '.$user->info->lastName : 'N/A'}} </td>
+                                            <td>{{ $user->info->firstname ?? 'update profile'}} </td>
                                             <td>15</td>
                                             <td>15</td>
                                             <td>25</td>
-                                            <td>{{$user->posts->count()}}</td>
+                                            <td>{{count($user->posts) == null ? 'no post found': $user->post->count}}</td>
                                             <td>{{ date('M j, Y h:i a',strtotime($user->created_at)) }}</td>
                                             <td>{{ date('M j, Y h:i a',strtotime($user->updated_at)) }}</td>
                                         </tr>
